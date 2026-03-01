@@ -1,12 +1,35 @@
 ---
 name: frontend-aesthetics
-description: Apply distinctive, anti-AI-slop frontend aesthetics to any UI work. Injects typography, color, motion, and background design principles that prevent generic-looking UIs. Auto-invokes when building React/Next.js/frontend components to ensure every interface is bold and distinctive. Covers font pairing, OKLCH color systems, framer-motion patterns, atmospheric backgrounds, layout rules, and 10 named aesthetic directions. Flags AI slop indicators like Inter font, purple gradients, and symmetric card grids.
+description: "Create distinctive, production-grade frontend interfaces with high design quality. Combines design thinking (purpose, tone, differentiation) with concrete anti-AI-slop rules (font pairing, OKLCH color systems, motion patterns, atmospheric backgrounds). Auto-invokes when building React/Next.js/frontend components, pages, dashboards, or any UI work. Use when asked to 'build a frontend', 'create a component', 'design a page', 'build a dashboard', or any UI-related work."
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep
 ---
 
-# Frontend Aesthetics -- Anti-AI-Slop Design System
+# Frontend Aesthetics — Design Thinking + Anti-AI-Slop Rules
 
-You MUST commit to a BOLD aesthetic direction BEFORE writing any UI code. Never default to generic patterns.
+## Step 0: Design Thinking (BEFORE any code)
+
+Before writing a single line of UI code, answer these questions:
+
+1. **Purpose**: What problem does this interface solve? Who uses it? What's the core user action?
+2. **Tone**: Pick a direction and commit. Don't hedge. Options below, but invent your own if none fit.
+3. **Differentiation**: What makes this UNFORGETTABLE? What's the one thing someone will remember? If you can't answer this, you haven't thought enough.
+4. **Constraints**: Framework requirements, accessibility needs, performance budget, existing design system to follow.
+
+Present your choices to the user in a brief "Design Direction" block:
+```
+## Design Direction
+- Purpose: [one sentence]
+- Tone: [chosen direction]
+- Signature element: [the one memorable thing]
+- Font pairing: [display + body]
+- Color approach: [palette source or mood]
+```
+
+Wait for user confirmation before coding. If the user says "just build it", pick a bold direction anyway — never default to generic.
+
+**CRITICAL**: Match implementation complexity to the vision. Maximalist designs need elaborate animations and effects. Minimalist designs need restraint, precision, and careful spacing. Elegance comes from executing the vision fully, not from adding more stuff.
+
+**VARIETY**: No two projects should look the same. Vary between light and dark themes, different fonts, different aesthetics. Never converge on the same choices across projects.
 
 ## Typography Rules
 
