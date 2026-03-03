@@ -130,6 +130,42 @@ fi
 # ----------------------------------------------------------
 echo "Step 5/6: Installing Claude Code plugins..."
 
+# Register the GS marketplace if not already known
+SETTINGS_FILE="$HOME/.claude/settings.json"
+if [ -f "$SETTINGS_FILE" ] && grep -q "gs-marketplace" "$SETTINGS_FILE" 2>/dev/null; then
+    ok "GS marketplace already registered"
+else
+    mkdir -p "$(dirname "$SETTINGS_FILE")"
+    if [ -f "$SETTINGS_FILE" ]; then
+        # Merge marketplace into existing settings
+        python3 -c "
+import json
+with open('$SETTINGS_FILE') as f:
+    settings = json.load(f)
+settings.setdefault('extraKnownMarketplaces', {})['gs-marketplace'] = {
+    'source': {'source': 'git', 'url': 'https://github.com/GrantSmiths/gs-marketplace.git'}
+}
+with open('$SETTINGS_FILE', 'w') as f:
+    json.dump(settings, f, indent=4)
+" 2>/dev/null
+    else
+        # Create settings from scratch
+        cat > "$SETTINGS_FILE" << 'MKEOF'
+{
+    "extraKnownMarketplaces": {
+        "gs-marketplace": {
+            "source": {
+                "source": "git",
+                "url": "https://github.com/GrantSmiths/gs-marketplace.git"
+            }
+        }
+    }
+}
+MKEOF
+    fi
+    ok "Registered GS marketplace"
+fi
+
 install_plugin() {
     local name="$1"
     local source="$2"
